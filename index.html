@@ -6,17 +6,7 @@
     <title>Our Wedding Story - Photo Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
-    <script>
-        const PASSWORD = "wedding2025"; 
-        
-        /* // UNCOMMENT THIS BLOCK TO ACTIVATE THE PASSWORD GATE
-        let enteredPassword = prompt("Please enter the access code to view the gallery:");
-        if (enteredPassword !== PASSWORD) {
-            alert("Access denied. Please contact the couple for the code.");
-            window.location.href = "about:blank"; 
-        }
-        */
-    </script>
+    <script src="config.js"></script>
     
     <style>
         /* COLOR PALETTE & FONT */
@@ -170,64 +160,23 @@
         <p><em>(Click on any event to view the full photo album)</em></p>
     </header>
 
-    <div class="gallery-container">
-        
-        <div class="gallery-item">
-            <a href="https://drive.google.com/drive/folders/1RiTaOieOdaQgi_djAkdYh5V5V8MqgLZX" target="_blank">
-                <img class="thumbnail" src="sangeet_thumb.jpg" alt="Sangeet Night" loading="lazy">
-                <div class="caption">
-                    💃 SANGEET NIGHT
-                </div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="https://drive.google.com/drive/folders/1lEZKOe9ACcvxo2PhiY7--yneDA8Z7f40" target="_blank">
-                <img class="thumbnail" src="haldi_thumb.jpg" alt="Haldi Ceremony" loading="lazy">
-                <div class="caption">
-                    🌼 HALDI CEREMONY
-                </div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="https://drive.google.com/drive/folders/1satuU9386OHIGRhQkCWEsWmmioXGuSne" target="_blank">
-                <img class="thumbnail" src="baaraat_thumb.jpg" alt="The Baaraat" loading="lazy">
-                <div class="caption">
-                    💍 THE BAARAAT
-                </div>
-            </a>
-        </div>
-
-        <div class="gallery-item">
-            <a href="https://drive.google.com/drive/folders/1LJGb96n_61I-dtR3VcSbOLY25VX0l8LX" target="_blank">
-                <img class="thumbnail" src="reception_thumb.jpg" alt="Reception Party" loading="lazy">
-                <div class="caption">
-                    🥂 RECEPTION PARTY
-                </div>
-            </a>
-        </div>
-        
-    </div>
+    <div class="gallery-container" id="gallery"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
             // --- CONFIGURATION ---
             const BG_FOLDER = "BGImages";
-            // 5. MAX_BG_IMAGES: Change this number if you add more background images (e.g., set to 8 if you have 08.jpg)
             const MAX_BG_IMAGES = 5; 
-            const TRANSITION_TIME_MS = 5000; // 5 seconds
+            const TRANSITION_TIME_MS = 5000;
 
-            // --- 5. Dynamic Background Slideshow Logic ---
+            // --- Dynamic Background Slideshow Logic ---
             const bgSlideshow = document.getElementById('bg-slideshow');
             let currentImage = 0;
             const images = [];
 
-            // Generate image elements based on MAX_BG_IMAGES (01.jpg, 02.jpg, etc.)
             for (let i = 1; i <= MAX_BG_IMAGES; i++) {
                 const img = document.createElement('img');
-                // PADDING: Ensures the number is always two digits (01, 02, etc.)
                 const filename = `${BG_FOLDER}/${String(i).padStart(2, '0')}.jpg`;
                 img.src = filename;
                 img.alt = `Wedding Background ${i}`;
@@ -246,36 +195,30 @@
                 setInterval(nextImage, TRANSITION_TIME_MS);
             }
             
-            // --- 6. Petal Shower Logic ---
+            // --- Petal Shower Logic ---
             const petalShower = document.getElementById('petal-shower');
             const PETAL_COUNT = 30;
             const PETAL_COLORS = [
                 'var(--primary-color)', 
                 'var(--secondary-color)', 
-                '#f4f4f4' // White/light pink for variety
+                '#f4f4f4'
             ];
 
             function generatePetals() {
                 for (let i = 0; i < PETAL_COUNT; i++) {
                     const petal = document.createElement('div');
                     petal.className = 'petal';
+                    petal.style.left = `${Math.random() * 100}vw`;
                     
-                    // Randomize start position (0% to 100% of screen width)
-                    petal.style.left = `${Math.random() * 100}vw`; 
-                    
-                    // Randomize size and animation duration for variety
-                    const size = Math.random() * 8 + 8; // 8px to 16px
+                    const size = Math.random() * 8 + 8;
                     petal.style.width = `${size}px`;
                     petal.style.height = `${size}px`;
                     
-                    const duration = Math.random() * 10 + 15; // 15s to 25s
+                    const duration = Math.random() * 10 + 15;
                     petal.style.animationDuration = `${duration}s`;
                     
-                    // Randomize color
                     const colorIndex = Math.floor(Math.random() * PETAL_COLORS.length);
                     petal.style.backgroundColor = PETAL_COLORS[colorIndex];
-                    
-                    // Random delay so they don't all start at once
                     petal.style.animationDelay = `-${Math.random() * 10}s`;
 
                     petalShower.appendChild(petal);
@@ -284,6 +227,23 @@
 
             generatePetals();
 
+            // --- Load Gallery Events from config.js ---
+            if (typeof WEDDING_EVENTS !== 'undefined') {
+                const gallery = document.getElementById('gallery');
+                WEDDING_EVENTS.forEach(event => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+                    item.innerHTML = `
+                        <a href="${event.link}" target="_blank">
+                            <img class="thumbnail" src="${event.image}" alt="${event.name}">
+                            <div class="caption">
+                                ${event.emoji} ${event.name}
+                            </div>
+                        </a>
+                    `;
+                    gallery.appendChild(item);
+                });
+            }
         });
     </script>
 
