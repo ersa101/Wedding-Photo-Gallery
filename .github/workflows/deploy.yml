@@ -18,66 +18,66 @@ jobs:
 
       - name: Generate config.js from secrets
         run: |
-          cat <<'EOF' > config.js
+          cat <<EOF > config.js
 const WEDDING_EVENTS = [
   {
-    name: 'RU23DEC<br>Welcome & Tilak',
+    name: 'THE RUs Shri Ganesh',
     emoji: '🙏',
-    image: 'event1_thumb.jpg',
+    image: 'ru23dec_thumb.jpg',
     link: "${{ secrets.EVENT_1_LINK_ru23dec }}"
   },
   {
-    name: 'SHREE GANESH<br>Pooja',
+    name: 'THE SHREe GANESH<br>with Chaak n Mayera',
     emoji: '🪔',
-    image: 'event2_thumb.jpg',
+    image: 'shreeganesh_thumb.jpg',
     link: "${{ secrets.EVENT_2_LINK_shreeGanesh }}"
   },
   {
-    name: 'MEHENDI<br>Henna Night',
+    name: 'THE MEHENDI<br>RuSh का रंग ',
     emoji: '🌿',
-    image: 'event3_thumb.jpg',
+    image: 'mehendi_thumb.jpg',
     link: "${{ secrets.EVENT_3_LINK_Mehendi }}"
   },
   {
-    name: 'SAGAI<br>Engagement',
+    name: 'THE SAGAI<br>दिलों की सौदेबाज़ी',
     emoji: '💍',
-    image: 'event4_thumb.jpg',
+    image: 'sagai_thumb.jpg',
     link: "${{ secrets.EVENT_4_LINK_sagai }}"
   },
   {
-    name: 'SANGEET NIGHT',
+    name: 'THE SANGEET<br>नाचेंगे सारी रात',
     emoji: '💃',
     image: 'sangeet_thumb.jpg',
     link: "${{ secrets.EVENT_5_LINK_sangeet }}"
   },
   {
-    name: 'HALDI CEREMONY',
+    name: 'THE HALDI<br>पीली धूप पहन के तुम',
     emoji: '🌼',
     image: 'haldi_thumb.jpg',
     link: "${{ secrets.EVENT_6_LINK_haldi }}"
   },
   {
-    name: 'GAURI PUJA',
+    name: 'THE GAURI PUJA<br>ॐ देवी महागौर्यै नमः',
     emoji: '🌸',
-    image: 'event7_thumb.jpg',
+    image: 'gauripuja_thumb.jpg',
     link: "${{ secrets.EVENT_7_LINK_gauripuja }}"
   },
   {
-    name: 'THE BAARAAT',
+    name: 'THE BAARAAT<br>दुल्हन हम ले जाएंगे',
     emoji: '🐎',
     image: 'baaraat_thumb.jpg',
     link: "${{ secrets.EVENT_8_LINK_baaraat }}"
   },
   {
-    name: 'FERE<br>Wedding Vows',
+    name: 'THE VOWS<br>वादा 7 जन्मों का ',
     emoji: '🔥',
-    image: 'event9_thumb.jpg',
+    image: 'fere_thumb.jpg',
     link: "${{ secrets.EVENT_9_LINK_fere }}"
   },
   {
-    name: 'BPL RECEPTION',
+    name: 'THE OTHER RECEPTION<br> at Bhopal',
     emoji: '🥂',
-    image: 'event10_thumb.jpg',
+    image: 'bplreception_thumb.jpg',
     link: "${{ secrets.EVENT_10_LINK_bplreception }}"
   }
 ];
