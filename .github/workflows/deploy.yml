@@ -1,0 +1,96 @@
+name: Deploy Wedding Gallery to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Generate config.js from secrets
+        run: |
+          cat <<'EOF' > config.js
+const WEDDING_EVENTS = [
+  {
+    name: 'RU23DEC<br>Welcome & Tilak',
+    emoji: '🙏',
+    image: 'event1_thumb.jpg',
+    link: "${{ secrets.EVENT_1_LINK_ru23dec }}"
+  },
+  {
+    name: 'SHREE GANESH<br>Pooja',
+    emoji: '🪔',
+    image: 'event2_thumb.jpg',
+    link: "${{ secrets.EVENT_2_LINK_shreeGanesh }}"
+  },
+  {
+    name: 'MEHENDI<br>Henna Night',
+    emoji: '🌿',
+    image: 'event3_thumb.jpg',
+    link: "${{ secrets.EVENT_3_LINK_Mehendi }}"
+  },
+  {
+    name: 'SAGAI<br>Engagement',
+    emoji: '💍',
+    image: 'event4_thumb.jpg',
+    link: "${{ secrets.EVENT_4_LINK_sagai }}"
+  },
+  {
+    name: 'SANGEET NIGHT',
+    emoji: '💃',
+    image: 'sangeet_thumb.jpg',
+    link: "${{ secrets.EVENT_5_LINK_sangeet }}"
+  },
+  {
+    name: 'HALDI CEREMONY',
+    emoji: '🌼',
+    image: 'haldi_thumb.jpg',
+    link: "${{ secrets.EVENT_6_LINK_haldi }}"
+  },
+  {
+    name: 'GAURI PUJA',
+    emoji: '🌸',
+    image: 'event7_thumb.jpg',
+    link: "${{ secrets.EVENT_7_LINK_gauripuja }}"
+  },
+  {
+    name: 'THE BAARAAT',
+    emoji: '🐎',
+    image: 'baaraat_thumb.jpg',
+    link: "${{ secrets.EVENT_8_LINK_baaraat }}"
+  },
+  {
+    name: 'FERE<br>Wedding Vows',
+    emoji: '🔥',
+    image: 'event9_thumb.jpg',
+    link: "${{ secrets.EVENT_9_LINK_fere }}"
+  },
+  {
+    name: 'BPL RECEPTION',
+    emoji: '🥂',
+    image: 'event10_thumb.jpg',
+    link: "${{ secrets.EVENT_10_LINK_bplreception }}"
+  }
+];
+EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
