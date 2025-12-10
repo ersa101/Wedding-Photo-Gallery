@@ -23,61 +23,61 @@ const WEDDING_EVENTS = [
   {
     name: 'THE RUs Shri Ganesh',
     emoji: '🙏',
-    image: 'ru23dec_thumb.jpg',
+    image: 'ru23dec_thumb_v2.jpg',
     link: "${{ secrets.EVENT_1_LINK_ru23dec }}"
   },
   {
     name: 'THE SHREe GANESH<br>with Chaak n Mayera',
     emoji: '🪔',
-    image: 'shreeganesh_thumb.jpg',
+    image: 'shreeganesh_thumb_v2.jpg',
     link: "${{ secrets.EVENT_2_LINK_shreeGanesh }}"
   },
   {
     name: 'THE MEHENDI<br>RuSh का रंग ',
     emoji: '🌿',
-    image: 'mehendi_thumb.jpg',
+    image: 'mehendi_thumb_v2.jpg',
     link: "${{ secrets.EVENT_3_LINK_Mehendi }}"
   },
   {
     name: 'THE SAGAI<br>दिलों की सौदेबाज़ी',
     emoji: '💍',
-    image: 'sagai_thumb.jpg',
+    image: 'sagai_thumb_v2.jpg',
     link: "${{ secrets.EVENT_4_LINK_sagai }}"
   },
   {
     name: 'THE SANGEET<br>नाचेंगे सारी रात',
     emoji: '💃',
-    image: 'sangeet_thumb.jpg',
+    image: 'sangeet_thumb_v2.jpg',
     link: "${{ secrets.EVENT_5_LINK_sangeet }}"
   },
   {
     name: 'THE HALDI<br>पीली धूप पहन के तुम',
     emoji: '🌼',
-    image: 'haldi_thumb.jpg',
+    image: 'haldi_thumb_v2.jpg',
     link: "${{ secrets.EVENT_6_LINK_haldi }}"
   },
   {
     name: 'THE GAURI PUJA<br>ॐ देवी महागौर्यै नमः',
     emoji: '🌸',
-    image: 'gauripuja_thumb.jpg',
+    image: 'gauripuja_thumb_v2.jpg',
     link: "${{ secrets.EVENT_7_LINK_gauripuja }}"
   },
   {
     name: 'THE BAARAAT<br>दुल्हन हम ले जाएंगे',
     emoji: '🐎',
-    image: 'baaraat_thumb.jpg',
+    image: 'baaraat_thumb_v2.jpg',
     link: "${{ secrets.EVENT_8_LINK_baaraat }}"
   },
   {
     name: 'THE VOWS<br>वादा 7 जन्मों का ',
     emoji: '🔥',
-    image: 'fere_thumb.jpg',
+    image: 'fere_thumb_v2.jpg',
     link: "${{ secrets.EVENT_9_LINK_fere }}"
   },
   {
     name: 'THE OTHER RECEPTION<br> at Bhopal',
     emoji: '🥂',
-    image: 'bplreception_thumb.jpg',
+    image: 'bplreception_thumb_v2.jpg',
     link: "${{ secrets.EVENT_10_LINK_bplreception }}"
   }
 ];
