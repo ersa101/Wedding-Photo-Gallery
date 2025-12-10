@@ -74,9 +74,10 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 25px;
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 30px auto;
-            padding: 20px 0;
+            padding: 20px;
+            width: 100%;
         }
 
         /* 3. Thumbnail Hover Animation */
@@ -88,38 +89,53 @@
             transition: transform 0.3s, box-shadow 0.3s;
             border: 3px solid transparent;
             backdrop-filter: blur(5px);
-            width: 350px;
             flex-shrink: 0;
         }
 
-        /* Row 1: 2 items */
+        /* FIXED LAYOUT - No wrapping */
+        /* Row 1: 2 items (items 1-2) */
         .gallery-item:nth-child(1),
         .gallery-item:nth-child(2) {
-            width: 350px;
+            width: 400px;
+            margin-bottom: 25px;
         }
 
-        /* Row 2: 3 items */
+        /* Row 2: 3 items (items 3-5) */
         .gallery-item:nth-child(3),
         .gallery-item:nth-child(4),
         .gallery-item:nth-child(5) {
-            width: 280px;
+            width: 310px;
+            margin-bottom: 25px;
         }
 
-        /* Row 3: 2 items */
+        /* Row 3: 2 items (items 6-7) */
         .gallery-item:nth-child(6),
         .gallery-item:nth-child(7) {
-            width: 330px;
+            width: 380px;
+            margin-bottom: 25px;
         }
 
-        /* Row 4: 2 items */
+        /* Row 4: 2 items (items 8-9) */
         .gallery-item:nth-child(8),
         .gallery-item:nth-child(9) {
-            width: 330px;
+            width: 380px;
+            margin-bottom: 25px;
         }
 
-        /* Row 5: 1 item - centered */
+        /* Row 5: 1 item (item 10) - centered */
         .gallery-item:nth-child(10) {
-            width: 330px;
+            width: 380px;
+            margin-bottom: 25px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Ensure flex container doesn't wrap */
+        @media (min-width: 1600px) {
+            .gallery-container {
+                flex-wrap: nowrap;
+                flex-direction: row;
+            }
         }
 
         .gallery-item:hover {
@@ -277,11 +293,11 @@
                 WEDDING_EVENTS.forEach(event => {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
-                    // Try both .jpg and .png versions
-                    const imageName = event.image.replace('.jpg', '_v2');
+                    // Images are named .jpg but are actually PNG or JPEG format
+                    const imageFile = event.image.replace('.jpg', '_v2.jpg');
                     item.innerHTML = `
                         <a href="${event.link}" target="_blank">
-                            <img class="thumbnail" src="${imageName}.png" alt="${event.name}" onerror="this.src='${imageName}.jpg'; if(this.naturalWidth===0)this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect fill=%22%23e8e8e8%22 width=%22400%22 height=%22250%22/%3E%3C/svg%3E'">
+                            <img class="thumbnail" src="${imageFile}" alt="${event.name}">
                             <div class="caption">
                                 ${event.emoji} ${event.name}
                             </div>
