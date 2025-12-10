@@ -177,7 +177,7 @@
 
             for (let i = 1; i <= MAX_BG_IMAGES; i++) {
                 const img = document.createElement('img');
-                const filename = `${BG_FOLDER}/${String(i).padStart(2, '0')}.jpg`;
+                const filename = `${BG_FOLDER}/${String(i).padStart(2, '0')}_v2.jpg`;
                 img.src = filename;
                 img.alt = `Wedding Background ${i}`;
                 bgSlideshow.appendChild(img);
@@ -233,9 +233,10 @@
                 WEDDING_EVENTS.forEach(event => {
                     const item = document.createElement('div');
                     item.className = 'gallery-item';
+                    const imageWithV2 = event.image.replace('.jpg', '_v2.jpg');
                     item.innerHTML = `
                         <a href="${event.link}" target="_blank">
-                            <img class="thumbnail" src="${event.image}" alt="${event.name}">
+                            <img class="thumbnail" src="${imageWithV2}" alt="${event.name}">
                             <div class="caption">
                                 ${event.emoji} ${event.name}
                             </div>
